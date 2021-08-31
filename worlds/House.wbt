@@ -1,0 +1,490 @@
+#VRML_SIM R2021a utf8
+WorldInfo {
+  title "House"
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  orientation 0.19557381249579678 -0.9508597359978614 -0.24003467733628858 4.459924227797865
+  position 2.1187830793836766 1.1405277510893421 -0.44206320691410883
+  exposure 0.1
+}
+Floor {
+  size 2 2
+  tileSize 0.25 0.25
+  appearance PBRAppearance {
+    baseColorMap ImageTexture {
+      repeatS FALSE
+      repeatT FALSE
+    }
+    roughness 1
+    roughnessMap ImageTexture {
+      url [
+        "textures/parquetry/chequered_parquetry_roughness.jpg"
+      ]
+    }
+    metalness 0
+    normalMap ImageTexture {
+      url [
+        "textures/parquetry/chequered_parquetry_normal.jpg"
+      ]
+    }
+    occlusionMap ImageTexture {
+      url [
+        "textures/parquetry/chequered_parquetry_occlusion.jpg"
+      ]
+    }
+  }
+}
+TrackOne {
+  translation 0 -0.0075 0
+  rotation 0 1 0 2.3561903061004252
+}
+DEF WALL1 Solid {
+  translation 0 0.1 1
+  scale 0.1 0.1 0.1
+  children [
+    DEF WALL_GEOMETRY Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "textures/red_brick_wall.jpg"
+          ]
+        }
+        roughness 0.5
+        metalness 0
+      }
+      geometry Box {
+        size 20 2 0.2
+      }
+    }
+  ]
+  name "WALL"
+  boundingObject USE WALL_GEOMETRY
+}
+TexturedBackground {
+  texture "noon_building_overcast"
+}
+TexturedBackgroundLight {
+  texture "noon_sunny_garden"
+}
+Hemisson {
+  translation -0.37 0 -0.02
+  rotation 0 1 0 -1.8325953071795862
+  controller "line_follower_uv"
+  extensionSlot [
+    DistanceSensor {
+      translation -0.005 0.035 -0.057
+      rotation -0.5773509358554485 0.5773489358556708 0.5773509358554485 -2.094395307179586
+      name "ir0"
+      recognitionColors [
+        1 1 1
+      ]
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0.005 0.035 -0.057
+      rotation -0.5773502691896258 0.5773502691896258 -0.5773502691896258 2.09
+      name "ir1"
+      recognitionColors [
+        1 1 1
+      ]
+      type "infra-red"
+    }
+    LED {
+      translation 0 0.1 0
+      children [
+        Group {
+          children [
+            PointLight {
+              attenuation 0 0 1
+              color 0.5 0 1
+              location 0 0.01 0
+              on FALSE
+              castShadows TRUE
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.498039 0 1
+                roughness 1
+              }
+              geometry Cylinder {
+                height 0.1
+                radius 0.005
+              }
+            }
+          ]
+        }
+      ]
+      color [
+        0.5 0 1
+      ]
+    }
+  ]
+}
+DEF WALL Solid {
+  translation 0 0.1 -1
+  scale 0.1 0.1 0.1
+  children [
+    USE WALL_GEOMETRY
+  ]
+  name "WALL3"
+  boundingObject USE WALL_GEOMETRY
+}
+DEF WALL Solid {
+  translation -1 0.1 0
+  rotation 0 1 0 1.5708
+  scale 0.1 0.1 0.1
+  children [
+    USE WALL_GEOMETRY
+  ]
+  name "WALL2"
+  boundingObject USE WALL_GEOMETRY
+}
+DEF SOFA Solid {
+  translation -0.56 0 -0.85
+  rotation 0 1 0 -1.5707953071795862
+  scale 0.2 0.2 0.2
+  children [
+    DEF SOFA_SHAPE Sofa {
+    }
+  ]
+  name "SOFA1"
+  boundingObject Box {
+    size 0.1 0.1 0.1
+  }
+}
+DEF SOFA Solid {
+  translation -0.85 0 -0.5
+  scale 0.2 0.2 0.2
+  children [
+    DEF SOFA_SHAPE Sofa {
+    }
+  ]
+  name "SOFA2"
+  boundingObject Box {
+    size 0.1 0.1 0.1
+  }
+}
+DEF ARMCHAIR Solid {
+  translation -0.22 0 -0.84
+  rotation 0 1 0 -1.5707953071795862
+  scale 0.2 0.2 0.2
+  children [
+    Armchair {
+    }
+  ]
+  name "ARMCHAIR1"
+  boundingObject Box {
+    size 0.1 0.1 0.1
+  }
+}
+DEF PAINT Solid {
+  translation 0.2 0.05 -0.99
+  scale 0.1 0.1 0.1
+  children [
+    PortraitPainting {
+    }
+  ]
+  name "paint"
+}
+DEF PLANTS Solid {
+  translation -0.88 0 -0.85
+  scale 0.2 0.2 0.2
+  children [
+    BunchOfSunFlowers {
+    }
+  ]
+  name "plants"
+  boundingObject Box {
+    size 0.1 0.1 0.1
+  }
+}
+DEF ROUNDTABLE Solid {
+  translation -0.28 0 -0.32
+  scale 0.15 0.15 0.15
+  children [
+    RoundTable {
+    }
+  ]
+  name "roundtable"
+  boundingObject Box {
+    size 0.1 0.1 0.1
+  }
+}
+DEF TABLE Solid {
+  translation 0.66 0 0.75
+  rotation 0 1 0 1.5708
+  scale 0.2 0.2 0.2
+  children [
+    Table {
+      rotation 0 1 0 1.5708
+    }
+  ]
+  name "table"
+  boundingObject Box {
+    size 0.1 0.1 0.1
+  }
+}
+DEF CHAIRS Solid {
+  translation 0.55 0 0.86
+  rotation 0 1 0 -2.8797853071795863
+  scale 0.2 0.2 0.2
+  children [
+    WoodenChair {
+      rotation 0 1 0 -0.261795307179586
+    }
+  ]
+  name "chair"
+  boundingObject Box {
+    size 0.1 0.1 0.1
+  }
+}
+DEF CHAIRS Solid {
+  translation 0.55 0 0.65
+  rotation 0 -1 0 -0.2618053071795865
+  scale 0.2 0.2 0.2
+  children [
+    WoodenChair {
+      rotation 0 1 0 -0.261795307179586
+    }
+  ]
+  name "chair(1)"
+  boundingObject Box {
+    size 0.1 0.1 0.1
+  }
+}
+DEF CHAIRS Solid {
+  translation 0.75 0 0.65
+  rotation 0 1 0 0.261801
+  scale 0.2 0.2 0.2
+  children [
+    WoodenChair {
+      rotation 0 1 0 -0.261795307179586
+    }
+  ]
+  name "chair(2)"
+  boundingObject Box {
+    size 0.1 0.1 0.1
+  }
+}
+DEF CHAIRS Solid {
+  translation 0.75 0 0.86
+  rotation 0 1 0 -1.3089953071795861
+  scale 0.2 0.2 0.2
+  children [
+    WoodenChair {
+      rotation 0 1 0 -1.8325953071795862
+    }
+  ]
+  name "chair(3)"
+  boundingObject Box {
+    size 0.1 0.1 0.1
+  }
+}
+DEF GABINET Solid {
+  translation -0.99 0 0.64
+  scale 0.2 0.2 0.2
+  children [
+    Cabinet {
+      rotation 0 1 0 1.5708
+      primaryAppearance PaintedWood {
+        textureTransform TextureTransform {
+        }
+      }
+      secondaryAppearance PaintedWood {
+        textureTransform TextureTransform {
+        }
+      }
+    }
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "textures/varnished_wood.jpg"
+          ]
+        }
+        roughness 1
+        metalness 0
+      }
+    }
+  ]
+  name "gabinet"
+  boundingObject Box {
+    size 0.1 0.1 0.1
+  }
+}
+DEF DESK Solid {
+  translation -0.5 0 0.85
+  scale 0.2 0.2 0.2
+  children [
+    Desk {
+    }
+  ]
+  name "desk"
+  boundingObject Box {
+    size 0.1 0.1 0.1
+  }
+}
+DEF MONITOR Solid {
+  translation -0.52 0.15 0.88
+  scale 0.2 0.2 0.2
+  children [
+    Monitor {
+    }
+  ]
+  name "monitor"
+}
+DEF KEYBOARD Solid {
+  translation -0.52 0.15 0.84
+  scale 0.2 0.2 0.2
+  children [
+    Keyboard {
+    }
+  ]
+  name "keyboard"
+}
+DEF COMPUTER Solid {
+  translation -0.42 0.15 0.88
+  scale 0.2 0.2 0.2
+  children [
+    DesktopComputer {
+    }
+  ]
+  name "cpu"
+}
+DEF MOUSE Solid {
+  translation -0.58 0.15 0.82
+  scale 0.2 0.2 0.2
+  children [
+    ComputerMouse {
+    }
+  ]
+  name "mouse"
+}
+DEF CLOCK Solid {
+  translation 0 0.15 0.985
+  rotation 0 1 0 3.14159
+  scale 0.2 0.2 0.2
+  children [
+    Clock {
+    }
+  ]
+  name "clock"
+}
+DEF BALL Solid {
+  translation -0.9 0 0.5
+  scale 0.2 0.2 0.2
+  children [
+    SoccerBall {
+      radius 0.112
+    }
+  ]
+  name "soccerball"
+  boundingObject Sphere {
+    radius 0.1
+  }
+}
+DEF JAMJAR Solid {
+  translation 0.55 0.149 0.72
+  scale 0.15 0.15 0.15
+  children [
+    JamJar {
+    }
+  ]
+  name "jamjar"
+}
+DEF FRUITBOWL Solid {
+  translation 0.65 0.149 0.75
+  scale 0.1 0.1 0.1
+  children [
+    FruitBowl {
+    }
+  ]
+  name "fruitbowl"
+}
+DEF ORANGE Solid {
+  translation 0.65 0.149 0.75
+  scale 0.18 0.18 0.18
+  children [
+    Orange {
+    }
+  ]
+  name "orange"
+}
+DEF CEREAL Solid {
+  translation 0.567 0.149 0.743
+  rotation 0 1 0 1.5708
+  scale 0.15 0.15 0.15
+  children [
+    CerealBox {
+    }
+  ]
+  name "cereal"
+}
+DEF BED Solid {
+  translation 0.65 0 -0.72
+  rotation 0 1 0 1.5708
+  scale 0.22 0.22 0.22
+  children [
+    Bed {
+    }
+  ]
+  name "bed"
+  boundingObject Box {
+    size 0.1 0.1 0.1
+  }
+}
+DEF GAMECHAIR Solid {
+  translation -0.48 0 0.7
+  scale 0.2 0.2 0.2
+  children [
+    OfficeChair {
+    }
+  ]
+  name "gamechair"
+  boundingObject Box {
+    size 0.1 0.1 0.1
+  }
+}
+DEF BEER Solid {
+  translation 0.52 0.149 0.76
+  scale 0.18 0.18 0.18
+  children [
+    BeerBottle {
+    }
+  ]
+  name "beer"
+}
+DEF TELEPHONE Solid {
+  translation -0.28 0.12 -0.32
+  rotation 0 1 0 2.35619
+  scale 0.156 0.156 0.156
+  children [
+    OfficeTelephone {
+    }
+  ]
+  name "telephone"
+}
+DEF TREE Solid {
+  translation -0.88 0 0.88
+  scale 0.15 0.15 0.15
+  children [
+    PottedTree {
+    }
+  ]
+  name "tree"
+  boundingObject Box {
+    size 0.1 0.1 0.1
+  }
+}
+DEF BOOK Solid {
+  translation -0.8 0.08 -0.45
+  rotation 0 1 0 1.0472
+  scale 0.15 0.15 0.15
+  children [
+    Book {
+      rotation 1 0 0 -1.5707953071795862
+    }
+  ]
+  name "book"
+}
